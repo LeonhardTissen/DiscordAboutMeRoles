@@ -7,7 +7,7 @@ newrolebutton.onclick = () => {
 }
 function openColorMenu() {
 	const colormenu = document.createElement('div');
-	colormenu.innerHTML = '<button class="colormenuclose" onclick="this.parentElement.remove()">Close</button>'
+	colormenu.innerHTML = '<button class="colormenuclose" onclick="this.parentElement.remove();updateString();">Close</button>'
 	emojis.forEach((emoji) => {
 		const elem = document.createElement('span')
 		elem.onclick = function() {
