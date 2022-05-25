@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Discord About me Roles</title>
+	<style type="text/css">
+		body {
+			background-color: #36393F;
+			font-family: Calibri;
+			width: 400px;
+			margin: 50px auto;
+			user-select: none;
+		}
+		button {
+			background-color: #2F3136;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			display: inline-block;
+			padding: 6px 10px 6px 10px;
+		}
+		button:hover {
+			background-color: #42464D;
+		}
+		#aboutmecontainer {
+			background-color: 18191C#18191C
+		}
+		#aboutmecontainer h3 {
+			color: #87898C;
+		}
+		.role {
+			background-color: #2F3136;
+			display: inline-block;
+			padding: 2px 10px 4px 10px;
+			border-radius: 4px;
+			color: white;
+			margin-left: 3px;
+		}
+		.roleicon {
+			cursor: pointer;
+			margin-right: 3px;
+		}
+		.roleicon:hover {
+			filter: brightness(1.5);
+		}
+		.roleicondropdown {
+			cursor: pointer;
+		}
+		.roleicondropdown:hover {
+			filter: brightness(1.5);
+		}
+		#copy {
+			font-size: 30px;
+		}
+		.colormenu {
+			position: fixed;
+			padding: 20px;
+			border-radius: 10px;
+			background-color: white;
+			padding-bottom: 55px;
+		}
+		#roles, #newrolebutton {
+			display: inline-block;
+		}
+		.colormenuclose {
+			position: absolute;
+			bottom: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div id="aboutmecontainer">
+		<h3>ABOUT ME</h3>
+		<div id="roles">
+		</div>
+		<button id="newrolebutton">+</button>
+	</div>
+	<hr>
+	<textarea id="output" rows="3" cols="50"></textarea>
+	<script type="text/javascript">
+		const emojis = ['🔴','🟠','🟡','🟢','🔵','🟣','🟤','⚫','⚪']
+		const rolecontainer = document.getElementById('roles')
+		const newrolebutton = document.getElementById('newrolebutton');
+		const output = document.getElementById('output')
+		newrolebutton.onclick = () => {
+			createRole(prompt('Enter Role Name:'))
+		}
+		function openColorMenu() {
+			const colormenu = document.createElement('div');
+			colormenu.innerHTML = '<button class="colormenuclose" onclick="this.parentElement.remove()">Close</button>'
+			emojis.forEach((emoji) => {
+				const elem = document.createElement('span')
+				elem.onclick = function() {
+					document.getElementById(this.id.replace('r','')).innerText = this.innerText;
+					closeColorMenu();
+					updateString();
+				}
+				elem.classList.add('roleicondropdown')
+				elem.id = 'r' + event.target.id
+				elem.innerText = emoji;
+				colormenu.appendChild(elem);
+			})
+			colormenu.classList.add('colormenu');
+			colormenu.style.left = event.clientX + 'px';
+			colormenu.style.top  = event.clientY + 'px';
+			document.body.appendChild(colormenu)
+		}
+		function closeColorMenu() {
+			const colormenus = document.querySelectorAll('.colormenu')
+			colormenus.forEach(elem => elem.remove())
+		}
+		let identifier = 0;
+		function createRole(text) {
+			const role = document.createElement('div');
+			role.classList.add('role');
+			role.innerHTML += `<span id="${identifier}" class="roleicon" onclick="openColorMenu()">🔴</span>${text}`;
+			role.ondblclick = function() {this.remove()};
+			identifier ++;
+			rolecontainer.appendChild(role)
+			updateString();
+		}
+		function updateString() {
+			let outputstring = ''
+			document.querySelectorAll('.role').forEach((role) => {
+				const str = role.innerText;
+				outputstring += '` ' + str.substring(0, 2) + ' ' + str.substring(2) + ' ` '
+			})
+			output.value = outputstring;
+		}
+		createRole('Made by Warze')
+	</script>
+</body>
+</html>
