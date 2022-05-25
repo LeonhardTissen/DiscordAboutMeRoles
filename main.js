@@ -43,7 +43,13 @@ function updateString() {
 	let outputstring = ''
 	document.querySelectorAll('.role').forEach((role) => {
 		const str = role.innerText;
-		outputstring += '` ' + str.substring(0, 2) + ' ' + str.substring(2) + ' ` '
+		let emoji_size;
+		if (['⚫','⚪'].includes(role.children[0].innerText)) {
+			emoji_size = 1;
+		} else {
+			emoji_size = 2;
+		}
+		outputstring += '` ' + str.substring(0, emoji_size) + ' ' + str.substring(emoji_size) + ' ` '
 	})
 	output.value = outputstring;
 }
