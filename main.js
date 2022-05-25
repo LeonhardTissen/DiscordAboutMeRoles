@@ -3,7 +3,10 @@ const rolecontainer = document.getElementById('roles')
 const newrolebutton = document.getElementById('newrolebutton');
 const output = document.getElementById('output')
 newrolebutton.onclick = () => {
-	createRole(prompt('Enter Role Name:'))
+	const newrole = prompt('Enter Role Name:');
+	if (newrole !== null) {
+		createRole(newrole)
+	}
 }
 function openColorMenu() {
 	const colormenu = document.createElement('div');
