@@ -58,3 +58,6 @@ button:hover {
 	position: absolute;
 	bottom: 15px;
 }
+#output {
+	resize: none;
+}
