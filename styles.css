@@ -44,8 +44,8 @@ button:hover {
 .roleicondropdown:hover {
 	filter: brightness(1.5);
 }
-#copy {
-	font-size: 30px;
+#roles, #newrolebutton {
+	display: inline-block;
 }
 .colormenu {
 	position: fixed;
@@ -53,9 +53,6 @@ button:hover {
 	border-radius: 10px;
 	background-color: white;
 	padding-bottom: 55px;
-}
-#roles, #newrolebutton {
-	display: inline-block;
 }
 .colormenuclose {
 	position: absolute;
