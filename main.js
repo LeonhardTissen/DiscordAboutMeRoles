@@ -7,7 +7,7 @@ newrolebutton.onclick = () => {
 }
 function openColorMenu() {
 	const colormenu = document.createElement('div');
-	colormenu.innerHTML = '<button class="colormenuclose" onclick="removeRole();">Close</button>'
+	colormenu.innerHTML = '<button class="colormenuclose" onclick="this.parentElement.remove();">Close</button>'
 	emojis.forEach((emoji) => {
 		const elem = document.createElement('span')
 		elem.onclick = function() {
@@ -34,13 +34,13 @@ function createRole(text) {
 	const role = document.createElement('div');
 	role.classList.add('role');
 	role.innerHTML += `<span id="${identifier}" class="roleicon" onclick="openColorMenu()">🔴</span>${text}`;
-	role.ondblclick = function() {this.remove()};
+	role.ondblclick = removeRole;
 	identifier ++;
 	rolecontainer.appendChild(role)
 	updateString();
 }
 function removeRole() {
-	event.target.parentElement.remove();
+	event.target.remove();
 	updateString();
 }
 function updateString() {
