@@ -1,36 +1,35 @@
-const emojis = ['🔴','🟠','🟡','🟢','🔵','🟣','🟤','⚫','⚪']
-const rolecontainer = document.getElementById('roles')
+const emojis = ['🔴','🟠','🟡','🟢','🔵','🟣','🟤','⚫','⚪'];
+const rolecontainer = document.getElementById('roles');
 const newrolebutton = document.getElementById('newrolebutton');
-const output = document.getElementById('output')
+const output = document.getElementById('output');
 newrolebutton.onclick = () => {
 	const newrole = prompt('Enter Role Name:');
 	if (newrole !== null) {
-		createRole(newrole)
+		createRole(newrole);
 	}
 }
 function openColorMenu() {
 	const colormenu = document.createElement('div');
-	colormenu.innerHTML = '<button class="colormenuclose" onclick="this.parentElement.remove();">Close</button>'
+	colormenu.innerHTML = '<button class="colormenuclose" onclick="this.parentElement.remove();">Close</button>';
 	emojis.forEach((emoji) => {
-		const elem = document.createElement('span')
+		const elem = document.createElement('span');
 		elem.onclick = function() {
 			document.getElementById(this.id.replace('r','')).innerText = this.innerText;
 			closeColorMenu();
 			updateString();
 		}
-		elem.classList.add('roleicondropdown')
-		elem.id = 'r' + event.target.id
+		elem.classList.add('roleicondropdown');
+		elem.id = 'r' + event.target.id;
 		elem.innerText = emoji;
 		colormenu.appendChild(elem);
 	})
 	colormenu.classList.add('colormenu');
 	colormenu.style.left = event.clientX + 'px';
 	colormenu.style.top  = event.clientY + 'px';
-	document.body.appendChild(colormenu)
+	document.body.appendChild(colormenu);
 }
 function closeColorMenu() {
-	const colormenus = document.querySelectorAll('.colormenu')
-	colormenus.forEach(elem => elem.remove())
+	document.querySelectorAll('.colormenu').forEach(elem => elem.remove());
 }
 let identifier = 0;
 function createRole(text) {
@@ -47,15 +46,10 @@ function removeRole() {
 	updateString();
 }
 function updateString() {
-	let outputstring = ''
+	let outputstring = '';
 	document.querySelectorAll('.role').forEach((role) => {
 		const str = role.innerText;
-		let emoji_size;
-		if (['⚫','⚪'].includes(role.children[0].innerText)) {
-			emoji_size = 1;
-		} else {
-			emoji_size = 2;
-		}
+		const emoji_size = role.children[0].innerText.length;
 		outputstring += '` ' + str.substring(0, emoji_size) + ' ' + str.substring(emoji_size) + ' ` '
 	})
 	output.value = outputstring;
