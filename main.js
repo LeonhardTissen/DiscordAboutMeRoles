@@ -1,12 +1,26 @@
 const emojis = ['🔴','🟠','🟡','🟢','🔵','🟣','🟤','⚫','⚪'];
 const rolecontainer = document.getElementById('roles');
 const newrolebutton = document.getElementById('newrolebutton');
+const copybutton = document.getElementById('copybutton');
 const output = document.getElementById('output');
+const helpbutton = document.getElementById('helpbutton')
 newrolebutton.onclick = () => {
 	const newrole = prompt('Enter Role Name:');
 	if (newrole !== null) {
 		createRole(newrole);
 	}
+}
+copybutton.onclick = () => {
+	output.select();
+	document.execCommand('copy');
+	copybutton.innerText = 'Copied to clipboard!';
+	setTimeout(function() {
+		copybutton.innerText = 'Copy';
+	}, 1000)
+}
+helpbutton.onclick = () => {
+	event.target.remove();
+	document.getElementById('help').style.display = 'block';
 }
 function openColorMenu() {
 	const colormenu = document.createElement('div');

@@ -1,9 +1,15 @@
 body {
-	background-color: #36393F;
+	background-color: #202225;
 	font-family: Calibri;
-	width: 400px;
-	margin: 50px auto;
 	user-select: none;
+}
+.window {
+	background-color: #36393F;
+	width: 400px;
+	padding: 50px;
+	border-radius: 20px;
+	margin: 50px auto;
+	box-shadow: 4px 4px 8px black;
 }
 button {
 	background-color: #2F3136;
@@ -60,4 +66,30 @@ button:hover {
 }
 #output {
 	resize: none;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+#copybutton {
+	font-size: 18px;
+}
+#help {
+	display: none;
+}
+#help p {
+	font-size: 18px;
+	color: #999;
+	font-weight: 800;
+}
+#help span {
+	color: white;
+}
+#help img {
+	width: 100%;
+}
+#helpbutton {
+	display: block;
+	margin: auto;
+	font-size: 14px;
 }

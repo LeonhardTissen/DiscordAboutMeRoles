@@ -7,14 +7,26 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-	<div id="aboutmecontainer">
-		<h3>ABOUT ME</h3>
-		<div id="roles">
+	<div class="window">
+		<div id="aboutmecontainer">
+			<h3>ABOUT ME</h3>
+			<div id="roles">
+			</div>
+			<button id="newrolebutton">+</button>
 		</div>
-		<button id="newrolebutton">+</button>
+		<hr>
+		<textarea id="output"></textarea>
+		<button id="copybutton">Copy</button>
+		<hr>
+		<button id="helpbutton">Need help?</button>
+		<div id="help">
+			<p>Click the <span>+</span> to create roles.</p>
+			<p>Click the <span>🔴 Emoji</span> in the role to change its color.</p>
+			<p>Double click on a role to remove it.</p>
+			<p>When you're done, paste the text in your <span>about me</span>.</p>
+			<img src="userprofile.png">
+		</div>
 	</div>
-	<hr>
-	<textarea id="output" rows="3" cols="50"></textarea>
 	<script type="text/javascript" src="main.js"></script>
 </body>
 </html>
